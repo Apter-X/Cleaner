@@ -2,9 +2,9 @@
 using Terminal.Gui;
 using Guitor.Views.Windows;
 
-namespace Guitor
+namespace Guitor.Views
 {
-    class ChatView
+    public class ChatView
     {
         private static string _username;
         private static readonly List<string> _users = new List<string>();

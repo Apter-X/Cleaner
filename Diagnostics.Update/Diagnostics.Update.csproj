@@ -59,7 +59,7 @@
     <None Include="Update.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RedCell.Net\Fetcher.csproj">
+    <ProjectReference Include="..\Fetcher\Fetcher.csproj">
       <Project>{98145560-729A-41A2-9B41-4B3DE1114471}</Project>
       <Name>Fetcher</Name>
     </ProjectReference>

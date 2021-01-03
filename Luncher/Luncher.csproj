@@ -1,12 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <StartupObject>Erebos.Engine.Program</StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+    <OutputPath></OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RedCell.Diagnostics.Update\Diagnostics.Update.csproj" />
+    <ProjectReference Include="..\Diagnostics.Update\Diagnostics.Update.csproj" />
   </ItemGroup>
 
 </Project>

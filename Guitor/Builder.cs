@@ -2,7 +2,7 @@
 
 namespace Guitor
 {
-    static class Builder
+    public class Builder
     {
         public static Window Init(string title)
         {

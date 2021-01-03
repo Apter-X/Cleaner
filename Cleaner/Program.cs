@@ -1,5 +1,4 @@
-﻿using System;
-using Guitor.Views;
+﻿using Guitor.Views;
 
 namespace Cleaner
 {
@@ -7,7 +6,7 @@ namespace Cleaner
     {
         static void Main(string[] args)
         {
-
+            EditorView.Edit(@"./../../../../README.md");
         }
     }
 }
