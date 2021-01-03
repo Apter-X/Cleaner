@@ -1,15 +1,15 @@
 using System;
 using Terminal.Gui;
 
-namespace Guitor.Views.Windows
+namespace Guitor.Views.Dialogs
 {
-    public class LoginWindow : Window
+    public class LoginDialog : Window
     {
         private readonly View _parent;
         public Action<(string name, DateTime birthday)> OnLogin { get; set; }
         public Action OnExit { get; set; }
 
-        public LoginWindow(View parent) : base("Login", 5)
+        public LoginDialog(View parent) : base("Login", 5)
         {
             _parent = parent;
             InitControls();

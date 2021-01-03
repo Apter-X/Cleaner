@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Terminal.Gui;
-using Guitor.Views.Windows;
+using Guitor.Views.Dialogs;
 
 namespace Guitor.Views
 {
@@ -92,7 +92,7 @@ namespace Guitor.Views
             #endregion
 
             // login window will be appear on the center screen
-            var loginWindow = new LoginWindow(null)
+            var loginWindow = new LoginDialog(null)
             {
                 OnExit = Application.RequestStop,
 

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Guitor.Views.Windows
+namespace Guitor.Views.Dialogs
 {
-    class UpdateWindow
+    class UpdateDialog
     {
     }
 }
