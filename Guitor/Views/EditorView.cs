@@ -11,14 +11,6 @@ namespace Guitor.Views
         {
             var app = Builder.Init("Editor v1.0");
 
-            var win = new Window(filename)
-            {
-                X = 0,
-                Y = 1,
-                Width = Dim.Fill(),
-                Height = Dim.Fill() - 1
-            };
-
             var editor = new TextView()
             {
                 X = 0,
@@ -28,9 +20,8 @@ namespace Guitor.Views
             };
 
             editor.Text = System.IO.File.ReadAllText(filename);
-            win.Add(editor);
-            app.Add(win);
 
+            app.Add(editor);
             Builder.Run(app);
         }
     }
