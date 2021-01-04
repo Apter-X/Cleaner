@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System;
-using System.Collections.Generic;
 using Diagnostics;
+using Updater;
 
 namespace Guitor.Controllers
 {
@@ -10,8 +10,9 @@ namespace Guitor.Controllers
         private static readonly object _mutex = new object();
         private static Thread _main;
         public static Action<(string log, DateTime timestamp)> OnLogAdded;
+        private static readonly Update updater = new Update();
 
-        public static void StartDebuging()
+        public static void StartChecking()
         {
             lock (_mutex)
             {
@@ -25,7 +26,8 @@ namespace Guitor.Controllers
 
         private static void Debug()
         {
-            Log.Event += (sender, e) => OnLogAdded?.Invoke((e.Message, DateTime.Now));;
+            Log.Event += (sender, e) => OnLogAdded?.Invoke((e.Message, DateTime.Now));
+            updater.CheckOnce();
         }
     }
 }

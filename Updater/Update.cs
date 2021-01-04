@@ -68,6 +68,15 @@ namespace Updater
 
         #region Methods
         /// <summary>
+        /// Check once for an update
+        /// </summary>
+        public void CheckOnce()
+        {
+            Log.Write("Starting checking for a new update");
+            Check(null);
+        }
+
+        /// <summary>
         /// Starts the monitoring.
         /// </summary>
         public void StartMonitoring()

@@ -1,5 +1,5 @@
 ﻿using Terminal.Gui;
-using Updater;
+
 using Diagnostics;
 using System.Collections.Generic;
 using System.Threading;
@@ -12,13 +12,15 @@ namespace Guitor.Views
 		public static void Start()
         {
             #region Initialization
-			var update = new Update();
+
+
 			List<string> _outputs = new List<string>();
+
 			var app = Builder.Init("Launcher");
 			#endregion
 
-		#region Output
-		var output = new FrameView("Output")
+			#region Output
+			var output = new FrameView("Output")
 			{
 				X = 0,
 				Y = 1,
@@ -36,16 +38,7 @@ namespace Guitor.Views
 			output.Add(outputList);
 			app.Add(output);
 
-			LauncherController.StartDebuging();
 
-			LauncherController.OnLogAdded = (logData) =>
-			{
-				Application.MainLoop.Invoke(() =>
-				{
-					_outputs.Add(logData.log);
-					outputList.SetSource(_outputs);
-				});
-			};
 			#endregion
 
 			#region Progress Bar
@@ -62,25 +55,32 @@ namespace Guitor.Views
 			#endregion
 
 			#region Buttons
-			var startButton = new Button("Start")
+			var startButton = new Button("Check")
 			{
 				X = Pos.Center(),
 				Y = Pos.Top(activityProgressBar) - 2,
 			};
 			
-			
 			startButton.Clicked += () => Application.MainLoop?.Invoke(() => { 
-				update.StartMonitoring();
+				LauncherController.OnLogAdded = (logData) =>
+				{
+					Application.MainLoop.Invoke(() =>
+					{
+						_outputs.Add(logData.log);
+						outputList.SetSource(_outputs);
+					});
+				};
+				LauncherController.StartChecking();
 			});
 
 			app.Add(startButton);
 
-			var stopButton = new Button("Stop")
+			var stopButton = new Button("Enter")
 			{
 				X = Pos.Right(startButton) + 2,
 				Y = Pos.Y(startButton),
 			};
-			stopButton.Clicked += () => update.StopMonitoring();
+			stopButton.Clicked += () => CleanerView.Start();
 
 			app.Add(stopButton);
             #endregion
