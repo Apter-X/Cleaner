@@ -6,9 +6,9 @@ using Diagnostics;
 
 namespace Luncher
 {
-    class Program
+    public class Launch
     {
-        static void Main(string[] args)
+        public static void Start()
         {
             string path = @"./ Cleaner.exe";
 

@@ -1,12 +1,13 @@
 ﻿using Guitor.Views;
 
-namespace Cleaner
+namespace Luncher
 {
     class Program
     {
         static void Main(string[] args)
         {
-            EditorView.Edit(@"update.xml");
+            //EditorView.Edit(@"update.xml");
+            LauncherView.Start();
         }
     }
 }

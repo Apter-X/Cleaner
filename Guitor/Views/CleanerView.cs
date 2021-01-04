@@ -1,5 +1,4 @@
 ﻿using Terminal.Gui;
-using System.Collections.Generic;
 
 namespace Guitor.Views
 {
