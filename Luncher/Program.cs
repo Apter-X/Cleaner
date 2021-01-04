@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Text;
-using Diagnostics.Update;
+using Updater;
+using Diagnostics;
 
-namespace Erebos.Engine
+namespace Luncher
 {
     class Program
     {
@@ -14,7 +15,7 @@ namespace Erebos.Engine
             Log.Console = true;
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-            var updater = new Updater();
+            var updater = new Update();
             updater.StartMonitoring();
             Console.ReadLine();
 

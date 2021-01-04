@@ -1,5 +1,4 @@
 ﻿using Terminal.Gui;
-using Diagnostics.Update;
 using System.Collections.Generic;
 
 namespace Guitor.Views
@@ -68,6 +67,7 @@ namespace Guitor.Views
                 Height = Dim.Fill(),
             };
 
+            consoleBare.Add(prompt);
             app.Add(consoleBare);
             #endregion
 

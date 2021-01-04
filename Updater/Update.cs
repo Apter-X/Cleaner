@@ -4,12 +4,13 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using Ionic.Zip;
 using Fetcher;
+using Diagnostics;
+using System.IO.Compression;
 
-namespace Diagnostics.Update
+namespace Updater
 {
-    public class Updater
+    public class Update
     {
         #region Constants
         /// <summary>
@@ -38,7 +39,7 @@ namespace Diagnostics.Update
         /// <summary>
         /// Initializes a new instance of the <see cref="Updater"/> class.
         /// </summary>
-        public Updater()
+        public Update()
             : this(new FileInfo(DefaultConfigFile))
         {
         }
@@ -47,7 +48,7 @@ namespace Diagnostics.Update
         /// Initializes a new instance of the <see cref="Updater"/> class.
         /// </summary>
         /// <param name="configFile">The configuration file.</param>
-        public Updater (FileInfo configFile)
+        public Update (FileInfo configFile)
         {
             Log.Debug = true;
 
@@ -69,7 +70,7 @@ namespace Diagnostics.Update
         /// <summary>
         /// Starts the monitoring.
         /// </summary>
-        public void StartMonitoring ()
+        public void StartMonitoring()
         {
             Log.Write("Starting monitoring every {0}s.", this._localConfig.CheckInterval);
             _timer = new Timer(Check, null, 5000, this._localConfig.CheckInterval * 1000);
@@ -78,7 +79,7 @@ namespace Diagnostics.Update
         /// <summary>
         /// Stops the monitoring.
         /// </summary>
-        public void StopMonitoring ()
+        public void StopMonitoring()
         {
             Log.Write("Stopping monitoring.");
             if (_timer == null)
@@ -93,7 +94,7 @@ namespace Diagnostics.Update
         /// Checks the specified state.
         /// </summary>
         /// <param name="state">The state.</param>
-        private void Check (object state)
+        private void Check(object state)
         {
             Log.Write("Check starting.");
 
@@ -144,7 +145,7 @@ namespace Diagnostics.Update
 
             Log.Write("Remote version is newer. Updating.");
             _updating = true;
-            Update();
+            Updating();
             _updating = false;
             Log.Write("Check ending.");
         }
@@ -152,7 +153,7 @@ namespace Diagnostics.Update
         /// <summary>
         /// Updates this instance.
         /// </summary>
-        private void Update ()
+        private void Updating()
         {
 
             Log.Write("Updating '{0}' files.", this._remoteConfig.Payloads.Length);
@@ -192,8 +193,8 @@ namespace Diagnostics.Update
                     try
                     {
                         var zipfile = Path.Combine(WorkPath, update);
-                        using (var zip = ZipFile.Read(zipfile))
-                            zip.ExtractAll(WorkPath, ExtractExistingFileAction.Throw);
+                        using (var zip = ZipFile.OpenRead(zipfile))
+                            zip.ExtractToDirectory(WorkPath, true);
                         File.Delete(zipfile);
                     }
                     catch (Exception ex)

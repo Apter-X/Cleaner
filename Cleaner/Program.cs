@@ -6,7 +6,7 @@ namespace Cleaner
     {
         static void Main(string[] args)
         {
-            EditorView.Edit(@"./../../../../README.md");
+            EditorView.Edit(@"update.xml");
         }
     }
 }

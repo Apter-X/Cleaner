@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Diagnostics.Update
+namespace Diagnostics
 {
     /// <summary>
     /// A general purpose logging facility.
