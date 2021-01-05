@@ -2,7 +2,7 @@
 
 namespace Guitor.Views
 {
-    public class CleanerView
+    public static class CleanerView
     {
         public static void Start()
         {
@@ -58,12 +58,10 @@ namespace Guitor.Views
                 Height = Dim.Fill()
             };
 
-            var prompt = new ListView
+            var prompt = new ListView()
             {
-                X = 0,
-                Y = Pos.Bottom(overView),
                 Width = Dim.Fill(),
-                Height = Dim.Fill(),
+                Height = Dim.Fill()
             };
 
             consoleBare.Add(prompt);

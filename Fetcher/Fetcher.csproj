@@ -8,8 +8,8 @@
     <ProjectGuid>{98145560-729A-41A2-9B41-4B3DE1114471}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RedCell.Net</RootNamespace>
-    <AssemblyName>RedCell.Net</AssemblyName>
+    <RootNamespace>Fetcher</RootNamespace>
+    <AssemblyName>Fetcher</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

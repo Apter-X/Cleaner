@@ -7,7 +7,7 @@ namespace Luncher
         static void Main(string[] args)
         {
             //EditorView.Edit(@"update.xml");
-            LauncherView.Start();
+            CleanerView.Start();
         }
     }
 }
